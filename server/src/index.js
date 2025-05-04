@@ -16,9 +16,6 @@ const cache = new NodeCache({ stdTTL: 3600 });
 app.use(cors());
 app.use(express.json());
 
-// Debug: Log the API key at startup
-console.log('GEMINI_API_KEY in index.js:', process.env.GEMINI_API_KEY);
-
 // Analyze written answers in batches
 app.post('/api/analyze-written', async (req, res) => {
   const { batch } = req.body;
