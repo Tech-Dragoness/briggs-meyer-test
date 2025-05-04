@@ -1,21 +1,37 @@
-MIT License
+Copyright (c) [2025] The Author
 
-Copyright (c) 2025 Tech-Dragoness
+This software and website (the "Platform") is provided for educational purposes only. By using the Platform, you agree to the following terms and conditions:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Educational Use Only  
+   The Platform is intended solely for non-commercial, educational purposes. You may only use the Platform for learning, testing, and experimenting with code. Commercial usage, redistribution, or deployment of the Platform is strictly prohibited.
+   The original author retains full rights to deploy, modify, and distribute the Platform.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+2. Prohibited Activities  
+   You may NOT:
+   - Copy, modify, or distribute the source code of the Platform without explicit written permission from the copyright holder.
+   - Copy, modify, or create derivative works based on the Platform’s proprietary code, design, or structure. While the concept may be common, this specific implementation is protected.
+   - Use the Platform for any commercial purposes without express permission.
+   - Reproduce, redistribute, or sublicense the Platform's code.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+3. Data Collection and Usage
+   - By uploading code or interacting with the Platform, you consent to the collection and storage of the following data:
+   - The code you upload to the Platform.
+   - The generated documentation, HTML, PDF, and related output files.
+   - The code hosted in the Platform's GitHub repository as part of the platform's publicly available source code. This includes user-uploaded code and the corresponding generated files (documentation, HTML, PDFs) which will be made publicly visible in the GitHub repository.
+
+This data will ONLY be used for improving the Platform and enhancing its services. It will NOT be shared with third parties without your consent. You acknowledge that, while your code and documents may be stored, they will be visible to the public via the GitHub repository and will not be used for any other purposes unless explicitly stated.
+
+The Platform utilizes the Gemini API to power its AI-based code analysis and documentation generation features. For more information on the Gemini API, please refer to Gemini’s official documentation.
+
+4. No Warranty  
+   The Platform is provided "as is" and without any warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, or non-infringement. The authors or copyright holders shall not be liable for any claims, damages, or other liabilities arising from or in connection with the use of the Platform.
+
+5. Acceptance  
+   By using the Platform, you acknowledge that you have read, understood, and agree to comply with these terms. If you do not agree to these terms, you should not use the Platform.
+
+For permission requests or any other inquiries, please raise an issue in this GitHub repository.
+
+---
+
+LICENSE INFORMATION:
+This project uses a CUSTOM EDUCATIONAL LICENSE and the Gemini API for AI-powered code analysis.
