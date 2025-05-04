@@ -13,15 +13,13 @@ This software and website (the "Platform") is provided for educational purposes 
    - Use the Platform for any commercial purposes without express permission.
    - Reproduce, redistribute, or sublicense the Platform's code.
 
-3. Data Collection and Usage
-   - By uploading code or interacting with the Platform, you consent to the collection and storage of the following data:
-   - The code you upload to the Platform.
-   - The generated documentation, HTML, PDF, and related output files.
-   - The code hosted in the Platform's GitHub repository as part of the platform's publicly available source code. This includes user-uploaded code and the corresponding generated files (documentation, HTML, PDFs) which will be made publicly visible in the GitHub repository.
+3. Data Collection and Usage  
+   - By answering questions or interacting with the Platform, you consent to the following:  
+     - Your responses (numerical and written answers) will be sent to the Gemini API for AI-based analysis to determine your personality type.  
+     - The Platform does NOT store your responses; they are only temporarily processed to generate your personality results.  
+     - The results provided by the AI may NOT be accurate, and the Platform makes no guarantees about the correctness of the personality type or analysis. The author is not responsible for any incorrect results or consequences arising from their use.  
 
-This data will ONLY be used for improving the Platform and enhancing its services. It will NOT be shared with third parties without your consent. You acknowledge that, while your code and documents may be stored, they will be visible to the public via the GitHub repository and will not be used for any other purposes unless explicitly stated.
-
-The Platform utilizes the Gemini API to power its AI-based code analysis and documentation generation features. For more information on the Gemini API, please refer to Gemini’s official documentation.
+   The Platform utilizes the Gemini API to power its AI-based personality analysis features. For more information on the Gemini API, please refer to Gemini’s official documentation.
 
 4. No Warranty  
    The Platform is provided "as is" and without any warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, or non-infringement. The authors or copyright holders shall not be liable for any claims, damages, or other liabilities arising from or in connection with the use of the Platform.
