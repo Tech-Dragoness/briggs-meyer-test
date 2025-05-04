@@ -23,7 +23,6 @@ app.post('/api/analyze-written', async (req, res) => {
 
   const cachedResult = cache.get(batchKey);
   if (cachedResult) {
-    console.log('Returning cached written analysis:', cachedResult);
     return res.json(cachedResult);
   }
 
@@ -56,8 +55,6 @@ app.post('/api/analyze-written', async (req, res) => {
     });
 
     console.log('Sending request to Gemini API:');
-    console.log('URL:', url);
-    console.log('Body:', body);
 
     // Ensure fetch is loaded before using it
     if (!fetch) {
@@ -78,8 +75,6 @@ app.post('/api/analyze-written', async (req, res) => {
 
     const data = await response.json();
     const responseText = data.candidates[0].content.parts[0].text;
-    console.log('Raw Gemini written response:', responseText);
-
     let parsedResult;
     try {
       // Remove Markdown code block if present
@@ -96,12 +91,12 @@ app.post('/api/analyze-written', async (req, res) => {
         return primary;
       });
     } catch (parseError) {
-      console.error('Failed to parse written response:', parseError);
+      console.error('Failed to parse written response');
       parsedResult = batch.map(({ mbti }) => mbti.split('/')[0]);
     }
 
     cache.set(batchKey, parsedResult);
-    console.log('Returning written result:', parsedResult);
+    console.log('Returning written result');
     res.json(parsedResult);
   } catch (error) {
     console.error('Error analyzing written answers:', error.message);
@@ -109,7 +104,7 @@ app.post('/api/analyze-written', async (req, res) => {
       const [primary, secondary] = mbti.split('/');
       return primary;
     });
-    console.log('Returning mock result due to error:', mockResult);
+    console.log('Returning mock result due to error');
     cache.set(batchKey, mockResult);
     res.json(mockResult);
   }
@@ -122,7 +117,7 @@ app.post('/api/break-ties', async (req, res) => {
 
   const cachedResult = cache.get(tiesKey);
   if (cachedResult) {
-    console.log('Returning cached tie-break result:', cachedResult);
+    console.log('Returning cached tie-break result');
     return res.json(cachedResult);
   }
 
@@ -156,9 +151,7 @@ app.post('/api/break-ties', async (req, res) => {
       }
     });
 
-    console.log('Sending request to Gemini API for tie-breaking:');
-    console.log('URL:', url);
-    console.log('Body:', body);
+    console.log('Sending request to Gemini API for tie-breaking');
 
     // Ensure fetch is loaded before using it
     if (!fetch) {
@@ -179,8 +172,6 @@ app.post('/api/break-ties', async (req, res) => {
 
     const data = await response.json();
     const responseText = data.candidates[0].content.parts[0].text;
-    console.log('Raw Gemini tie-break response:', responseText);
-
     let parsedResult;
     try {
       // Remove Markdown code block and explanatory text
@@ -217,7 +208,6 @@ app.post('/api/break-ties', async (req, res) => {
     }
 
     cache.set(tiesKey, parsedResult);
-    console.log('Returning tie-break result:', parsedResult);
     res.json(parsedResult);
   } catch (error) {
     console.error('Error breaking ties:', error.message);
@@ -228,7 +218,7 @@ app.post('/api/break-ties', async (req, res) => {
       const chosenLetter = eCount > iCount ? letter1 : letter2;
       return { pair: { letters: [letter1, letter2] }, letter: chosenLetter };
     });
-    console.log('Returning mock tie-break result due to error:', mockResult);
+    console.log('Returning mock tie-break result due to error');
     cache.set(tiesKey, mockResult);
     res.json(mockResult);
   }
@@ -241,7 +231,6 @@ app.post('/api/generate-explanation', async (req, res) => {
 
   const cachedResult = cache.get(explanationKey);
   if (cachedResult) {
-    console.log('Returning cached explanation:', cachedResult);
     return res.json(cachedResult);
   }
 
@@ -270,9 +259,7 @@ app.post('/api/generate-explanation', async (req, res) => {
       }
     });
 
-    console.log('Sending request to Gemini API for explanation:');
-    console.log('URL:', url);
-    console.log('Body:', body);
+    console.log('Sending request to Gemini API for explanation');
 
     // Ensure fetch is loaded before using it
     if (!fetch) {
@@ -293,8 +280,6 @@ app.post('/api/generate-explanation', async (req, res) => {
 
     const data = await response.json();
     const responseText = data.candidates[0].content.parts[0].text;
-    console.log('Raw Gemini explanation response:', responseText);
-
     let parsedResult;
     try {
       // Remove Markdown code block if present
@@ -303,31 +288,23 @@ app.post('/api/generate-explanation', async (req, res) => {
       if (!parsedJson.explanation || typeof parsedJson.explanation !== 'string') {
         throw new Error('Invalid explanation format in response');
       }
-      console.log('Explanation after parsing:', parsedJson.explanation);
       parsedResult = { explanation: parsedJson.explanation };
-      console.log('Explanation after assigning to parsedResult:', parsedResult.explanation);
     } catch (parseError) {
       console.error('Failed to parse explanation response:', parseError);
       const fallbackExplanation = responseText.replace(/```json\n|\n```/g, '').trim();
-      console.log('Explanation after fallback parsing:', fallbackExplanation);
       parsedResult = { explanation: fallbackExplanation };
-      console.log('Explanation after assigning to parsedResult (fallback):', parsedResult.explanation);
     }
 
     cache.set(explanationKey, parsedResult);
-    console.log('Explanation before normalization:', parsedResult.explanation);
     // Normalize standalone \n concatenations just before sending the response
     parsedResult.explanation = parsedResult.explanation.replace(/(\n\s*)+/g, '\n\n');
-    console.log('Explanation after final normalization:', parsedResult.explanation);
     res.json(parsedResult);
   } catch (error) {
     console.error('Error generating explanation:', error.message);
     const mockResult = {
       explanation: `Due to an error, here's a basic explanation for **${type}**:\n* This type reflects your answers.\n* Points: E:${points.E}, I:${points.I}, N:${points.N}, S:${points.S}, T:${points.T}, F:${points.F}, J:${points.J}, P:${points.P}`
     };
-    console.log('Mock explanation before normalization:', mockResult.explanation);
     mockResult.explanation = mockResult.explanation.replace(/(\n\s*)+/g, '\n\n');
-    console.log('Mock explanation after final normalization:', mockResult.explanation);
     cache.set(explanationKey, mockResult);
     res.json(mockResult);
   }
