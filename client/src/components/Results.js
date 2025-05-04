@@ -58,7 +58,7 @@ function Results({ answers }) {
 
       for (let i = 0; i < writtenAnswers.length; i += 5) {
         const batch = writtenAnswers.slice(i, i + 5);
-        const response = await fetch('http://localhost:5000/api/analyze-written', {
+        const response = await fetch('https://briggs-meyer-test.onrender.com/api/analyze-written', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ batch })
@@ -105,7 +105,7 @@ function Results({ answers }) {
           return { pair: pairs[pair], relevantAnswers };
         });
 
-        const response = await fetch('http://localhost:5000/api/break-ties', {
+        const response = await fetch('https://briggs-meyer-test.onrender.com/api/break-ties', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ ties: tieData })
@@ -149,7 +149,7 @@ function Results({ answers }) {
       };
 
       // Step 6: Generate explanation
-      const explanationResponse = await fetch('http://localhost:5000/api/generate-explanation', {
+      const explanationResponse = await fetch('https://briggs-meyer-test.onrender.com/api/generate-explanation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: mbtiType, answers, points })
