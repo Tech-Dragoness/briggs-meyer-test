@@ -1,5 +1,5 @@
 # 🌟 Briggs-Meyer Personality Test 🌟
-Welcome, dear traveler, to the Briggs-Meyer Personality Test! This project invites you to discover your personality type through a blend of thoughtful questions and AI-powered analysis.
+Have you ever felt frustrated while taking a personality test, feeling that your response to a question wasn’t an option? I certainly did—so I thought, why not allow users to enter their own answers in such a dilemma and have AI analyze them? Welcome, dear traveler, to the Briggs-Meyer Personality Test! This project invites you to discover your personality type through a blend of thoughtful questions and AI-powered analysis.
 
 ## ✨ What Is This Project?
 The Briggs-Meyer Personality Test helps you uncover your personality type (like INFP or ESTJ) based on your answers to a series of questions—both numerical and written. The frontend, a React app hosted on Vercel with a Node.js backend on Render, using the Gemini API to analyze your written responses and break ties in your personality traits.
